@@ -1,0 +1,15 @@
+package com.karanjot.auth.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.karanjot.auth.entity.User;
+
+public interface UserService {
+
+	public User insert(User user);
+	public User findByEmail(String email);
+	public Optional<User> check(String emai);
+	public List<User> findUsers();
+
+}

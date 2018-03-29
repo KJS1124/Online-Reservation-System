@@ -1,0 +1,101 @@
+package com.karanjot.booking.entity;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.karanjot.booking.util.DateDeserializer;
+import com.karanjot.booking.util.DateSerializer;
+import com.karanjot.booking.util.DateTimeDeserializer;
+import com.karanjot.booking.util.DateTimeSerializer;
+
+@Entity
+@Table(name = "booking")
+public class Booking {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	long id;
+
+	@Column(name = "user_id")
+	long userId;
+
+	@Column(name = "restaurant_id")
+	long rid;
+
+	@Column(name = "booking_date")
+	Date bookingDate;
+
+	@Column(name = "booking_on")
+	LocalDateTime bookingOn;
+
+	@Column(name = "booking_till")
+	LocalDateTime bookingTill;
+
+	@Transient
+	private final SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
+	public long getRid() {
+		return rid;
+	}
+
+	public void setRid(long rid) {
+		this.rid = rid;
+	}
+
+	@JsonSerialize(using = DateSerializer.class)
+	public Date getBookingDate() {
+		return bookingDate;
+	}
+
+	@JsonDeserialize(using = DateDeserializer.class)
+	public void setBookingDate(Date bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
+	@JsonSerialize(using = DateTimeSerializer.class)
+	public LocalDateTime getBookingOn() {
+		return bookingOn;
+	}
+
+	@JsonDeserialize(using = DateTimeDeserializer.class)
+	public void setBookingOn(LocalDateTime bookingOn) {
+		this.bookingOn = bookingOn;
+	}
+
+	@JsonSerialize(using = DateTimeSerializer.class)
+	public LocalDateTime getBookingTill() {
+		return bookingTill;
+	}
+
+	@JsonDeserialize(using = DateTimeDeserializer.class)
+	public void setBookingTill(LocalDateTime bookingTill) {
+		this.bookingTill = bookingTill;
+	}
+
+}

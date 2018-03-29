@@ -1,0 +1,28 @@
+package com.karanjot.auth.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.karanjot.auth.entity.User;
+import com.karanjot.auth.repository.UserRepository;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	UserRepository repo;
+	@Override
+	public User insert(User user) {
+		return repo.save(user);
+	}
+	@Override
+	public User findByEmail(String email) {
+		// TODO Auto-generated method stub
+		Optional<User> user = repo.findByEmail(email);
+		return user.get();
+	}
+
+}

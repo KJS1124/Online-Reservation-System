@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <input type="text" #data class="form-control" style="width:50%;margin:20px 20px">
+    <button class="btn btn-primary" (click)="onSearch(data)" style="margin:20px 20px">Search</button>
+    <button class="btn btn-primary" (click)="onClear()" style="margin:20px 20px">Clear</button>
+  </div>
+  <div class="col-md-12">
+    <h2 *ngIf="searched">Search : {{searchedText}}</h2>
+  </div>
+</div>
+
+<div class="row" style="padding: 20px 15%">
+  <app-restaurant-list class="col-md-12" [list]="restaurants"></app-restaurant-list>
+</div>

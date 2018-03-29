@@ -1,0 +1,10 @@
+queue=email
+server.port=8086
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=emailerforapp@gmail.com
+spring.mail.password=S@12345678
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.ssl.trust=smtp.gmail.com
+spring.rabbitmq.listener.simple.auto-startup=false

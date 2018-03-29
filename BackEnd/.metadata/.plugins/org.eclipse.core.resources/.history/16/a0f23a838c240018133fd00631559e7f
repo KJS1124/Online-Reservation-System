@@ -1,0 +1,5 @@
+package com.karanjot.booking.util;
+
+public class DateSerializer {
+
+}

@@ -1,0 +1,77 @@
+<div class="container" style="padding-top:40px;">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-12">
+          <img src="{{'../../assets/image/'+restaurant.image}}" alt="{{restaurant.name}}" style="width:100%;height:300px;">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" style="padding:8px 0px 0px 16px;">
+          <h5 *ngIf="selectedTable!=null">Table type: {{selectedTable.type}}</h5>
+          <h5 *ngIf="selectedTable==null">Please Select Table</h5>
+        </div>
+        <div class="col-md-12" style="padding:8px 0px 0px 16px;">
+          <h5 *ngIf="selectedTable!=null">Total Bill : {{totalBill}}RS</h5>
+        </div>
+        <div class="col-md-12" style="padding:8px 0px 0px 16px;">Booking date:
+          <input type="date" [(ngModel)]="bookingdate">
+        </div>
+        <div class="col-md-12" style="padding:8px 0px 0px 16px;">Booking time:
+          <input type="time" [(ngModel)]="bookingtime"> till
+          <input type="time" [(ngModel)]="bookingtill">
+        </div>
+        <div class="col-md-12 text-right">
+          <button class="btn btn-success" [disabled]="selectedTable==null" (click)="booking()">Booking</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="d-flex justify-content-center">
+        <h2>{{restaurant.name}}</h2>
+      </div>
+      <div class="d-flex justify-content-center">
+        <h5>{{restaurant.location}}</h5>
+      </div>
+      <div class="d-flex justify-content-center">
+        <h5>{{restaurant.desc}}</h5>
+      </div>
+      <div class="d-flex justify-content-center">
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="row">
+        <div class="col-md-6 list-group list-group-flush pull-left">
+          <a class="list-group-item clearfix" [ngClass]="{active: selectedTable!=null && selectedTable.id==table.id}" style=" height: 85px; cursor: pointer;
+            " *ngFor="let table of restaurant.tables " (click)="tableSelected(table) ">
+            <div class="pull-left ">
+              <span class="list-group-item-heading ">Table Type: {{table.type}}
+                <p clsss="list-group-item-text ">Number of seats :
+                  <span>{{table.noOfSeats}}</span>
+                  <br>Price :
+                  <span>{{table.price}}RS</span>
+                </p>
+              </span>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-1">
+          <hr>
+        </div>
+        <div class="col-md-5 list-group list-group-flush pull-right" style="height: 500px; overflow: auto;">
+          <div class="card" *ngFor="let item of restaurant.items" style="margin-top:10px;">
+            <div class="row">
+              <div class="col-md-8 pull-left">
+                <div class="card-title">{{item.name}}</div>
+                <div class="card-text">Price : {{item.price}}RS</div>
+              </div>
+              <div class="col-md-4 pull-right">
+                <input type="number" (change)="onChange($event,item.name,item.price)" class="form-control" style="width:80px; margin:20% -10px;"
+                  min="0" max="10" value="0">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

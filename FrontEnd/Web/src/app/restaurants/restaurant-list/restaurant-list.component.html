@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" style="margin-top: 40px" *ngFor="let restaurant of restaurants">
+      <div class="card">
+        <img class="card-img-top" src="{{'../../assets/image/'+restaurant.image}}" style="height:300px;" alt="{{restaurant.name}}"
+          class="img-responsive">
+        <div class="card-body">
+          <h5 class="card-title">{{restaurant.name}}</h5>
+          <p class="card-text">{{restaurant.desc}}</p>
+          <a [routerLink]="['/restaurant',restaurant.id]" class="btn btn-primary">Book</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

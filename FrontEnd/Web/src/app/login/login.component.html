@@ -1,0 +1,21 @@
+<form (ngSubmit)="onSubmit(data)" #data="ngForm" class="col-md-4" style="margin:10% auto;">
+  <div class="col-md-12">
+    <div class="d-flex justify-content-center">
+      <h1>LOGIN</h1>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ngModel
+      name="userEmail" required email>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ngModel name="password" required
+      pattern=".{8,32}">
+  </div>
+  <button [disabled]="!data.valid" type="submit" class="btn btn-primary" style="width:100%">Submit</button>
+  <br>
+  <br>
+  <a routerLink="/registration">Dont You Have An Account Click Here</a>
+</form>

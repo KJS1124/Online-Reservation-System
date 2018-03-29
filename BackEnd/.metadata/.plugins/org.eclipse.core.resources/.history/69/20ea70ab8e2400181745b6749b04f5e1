@@ -1,0 +1,83 @@
+package com.karanjot.booking.entity;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "booking")
+public class Booking {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	long id;
+
+	@Column(name = "user_id")
+	long userId;
+
+	@Column(name = "restaurent_id")
+	long rid;
+
+	@Column(name = "booking_date")
+	Date bookingDate;
+
+	@Column(name = "booking_on")
+	LocalDateTime bookingOn;
+
+	@Column(name = "booking_till")
+	LocalDateTime bookingTill;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
+	public long getRid() {
+		return rid;
+	}
+
+	public void setRid(long rid) {
+		this.rid = rid;
+	}
+
+	public Date getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(Date bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
+	public LocalDateTime getBookingOn() {
+		return bookingOn;
+	}
+
+	public void setBookingOn(LocalDateTime bookingOn) {
+		this.bookingOn = bookingOn;
+	}
+
+	public LocalDateTime getBookingTill() {
+		return bookingTill;
+	}
+
+	public void setBookingTill(LocalDateTime bookingTill) {
+		this.bookingTill = bookingTill;
+	}
+
+}

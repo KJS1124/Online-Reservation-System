@@ -1,0 +1,27 @@
+package com.karanjot.email;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.karanjot.email.entity.Email;
+
+@Component
+public class Consumer {
+	private static final Logger log = LoggerFactory.getLogger(Consumer.class);
+	@Autowired
+	SendEmail sendEmail;
+	
+	@RabbitListener(queues = "${queue}")
+	public void handler(Email email) {
+		System.out.println(email.getTo());
+		try {
+		sendEmail.sendSimpleMessage(email.getTo(), "Booking Confirmed", email.getMessage());
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
+}

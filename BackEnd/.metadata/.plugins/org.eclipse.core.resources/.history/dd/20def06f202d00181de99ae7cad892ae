@@ -1,0 +1,23 @@
+package com.karanjot.booking.entity;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class Item {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	long id;
+	
+	@Column(name="name")
+	String name;
+	
+	@Column(name="price")
+	double price;
+	
+	@Column(name="quantity")
+	int quantity;
+
+	
+}

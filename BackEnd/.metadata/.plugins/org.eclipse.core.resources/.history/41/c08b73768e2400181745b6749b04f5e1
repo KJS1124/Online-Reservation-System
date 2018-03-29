@@ -1,0 +1,35 @@
+package com.karanjot.booking.entity;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="booking")
+public class Booking {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	long id;
+	
+	@Column(name="user_id")
+	long userId;
+	
+	@Column(name="restaurent_id")
+	long rid;
+	
+	@Column(name="booking_date")
+	Date bookingDate;
+	
+	@Column(name="booking_on")
+	LocalDateTime bookingOn;
+	
+	@Column(name="booking_till")
+	LocalDateTime bookingTill;
+
+}

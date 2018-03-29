@@ -1,0 +1,11 @@
+package com.karanjot.auth.service;
+
+import com.karanjot.auth.entity.User;
+
+public interface UserService {
+
+	public User insert(User user);
+	public User findByEmail(String email);
+	public Opional<User> check(String emai);
+
+}
